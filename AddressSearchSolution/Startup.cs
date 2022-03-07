@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace AddressSearchSolution
 {
+    // Startup class
     public class Startup
     {
         public Startup(IConfiguration configuration)
