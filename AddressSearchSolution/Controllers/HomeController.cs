@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using AddressSearchSolution.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace AddressSearchSolution.Controllers
 {
@@ -32,6 +33,25 @@ namespace AddressSearchSolution.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [HttpPost]
+        [Route("api/validateAddress")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public string ValidateAddress([FromBody]Address address)
+        {
+            string messageToUser = "validate successful";
+            switch (address.country)
+            {
+                case "BR":
+                    
+                    break;
+                case "CA":
+                    break;
+            }
+
+            return messageToUser;
         }
     }
 }

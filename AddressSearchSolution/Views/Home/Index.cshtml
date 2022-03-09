@@ -2,7 +2,6 @@
     ViewData["Title"] = "Home Page";
 }
 
-<html>
 
 <body>
     <div class="text-center">
@@ -28,7 +27,7 @@
 
     <div id="form" class="text-center">
         <br><br>
-        <label id="namelabel" for="name">recipient name:</label>
+        <label id="namelabel" for="name">Recipient name:</label>
 
         <input type="text" id="name" name="name"><br><br>
 
@@ -36,7 +35,7 @@
 
         <input type="text" id="address" name="address"><br><br>
 
-        <label id="buildinglabel" for="building">building and Unit Number: </label>
+        <label id="buildinglabel" for="building">Building and Unit Number: </label>
 
         <input type="text" id="building" name="building"><br><br>
 
@@ -44,7 +43,7 @@
 
         <input type="text" id="city" name="city"><br><br>
 
-        <label id="statelabel" for="State">state: </label>
+        <label id="statelabel" for="State">State: </label>
 
         <input type="text" id="state" name="state"><br><br>
 
@@ -52,6 +51,8 @@
 
         <input type="text" id="postcode" name="postcode"><br><br>
     </div>
+
+    <button type="button" onclick="validateAddress()">Validate address</button>
 
 </body>
 
@@ -70,7 +71,7 @@
                 var namelabel = document.createElement('label');
                 namelabel.setAttribute("id", "namelabel");
                 namelabel.setAttribute("for", "name");
-                namelabel.innerText = "recipient name:";
+                namelabel.innerText = "Recipient name:";
 
                 var name = document.createElement('input');
                 name.setAttribute("type", "text");
@@ -80,7 +81,7 @@
                 var addresslabel = document.createElement('label');
                 addresslabel.setAttribute("id", "addresslabel");
                 addresslabel.setAttribute("for", "address");
-                addresslabel.innerText = "stree name and house/builiding number:";
+                addresslabel.innerText = "Stree name and house/builiding number:";
 
                 var address = document.createElement('input');
                 address.setAttribute("type", "text");
@@ -136,5 +137,45 @@
     function removeAllElement() {
         document.getElementById('form').remove();
     }
+
+    function validateAddress() {
+        let url = "https://localhost:44317/api/validateAddress"
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", url);
+        xhr.setRequestHeader("Accept", "application/json");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                console.log(xhr.responseText);
+            }
+        };
+        var recipient_name = "";
+        if (document.getElementById("name")) {
+            recipient_name = document.getElementById("name").value;
+        }
+        var street_address = "";
+        if (document.getElementById("address")) {
+            street_address = document.getElementById("address").value;
+        }
+        var city = "";
+        if (document.getElementById("city")) {
+            city = document.getElementById("city").value;
+        }
+        var state = "";
+        if (document.getElementById("state")) {
+            state = document.getElementById("state").value;
+        }
+        var country = "";
+        if (document.getElementById("country")) {
+            country = document.getElementById("country").value;
+        }
+        var post_code = "";
+        if (document.getElementById("postcode")) {
+            post_code = document.getElementById("postcode").value;
+        }
+
+        var data = JSON.stringify({ "recipient_name": recipient_name, "street_address": street_address, "city": city, "state": state, "post_code": post_code, "country": country});
+        xhr.send(data);
+        
+    }
 </script>
-</html>
