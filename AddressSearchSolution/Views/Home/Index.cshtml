@@ -127,10 +127,275 @@
                 form.appendChild(postcode);
                 document.body.appendChild(form);
                 break;
+
             case 'CA':
-                //add code for CA here
+             
+                var form = document.createElement('div');
+                form.setAttribute("id", "form");
+                form.setAttribute("class", "text-center");
+                document.body.appendChild(form);
+
+                var namelabel = document.createElement('label');
+                namelabel.setAttribute("id", "namelabel");
+                namelabel.setAttribute("for", "name");
+                namelabel.innerText = "recipient name:";
+
+                var name = document.createElement('input');
+                name.setAttribute("type", "text");
+                name.setAttribute("id", "name");
+                name.setAttribute("name", "name");
+
+                var addresslabel = document.createElement('label');
+                addresslabel.setAttribute("id", "addresslabel");
+                addresslabel.setAttribute("for", "address");
+                addresslabel.innerText = "Unit number and street name:";
+
+                var address = document.createElement('input');
+                address.setAttribute("type", "text");
+                address.setAttribute("id", "address");
+                address.setAttribute("name", "address");
+
+                var citylabel = document.createElement('label');
+                citylabel.setAttribute("id", "citylabel");
+                citylabel.setAttribute("for", "city");
+                citylabel.innerText = "City-ProvienceCode:";
+
+                var city = document.createElement('input');
+                city.setAttribute("type", "text");
+                city.setAttribute("id", "city");
+                city.setAttribute("name", "city");
+
+                var postcodelabel = document.createElement('label');
+                postcodelabel.setAttribute("id", "postcodelabel");
+                postcodelabel.setAttribute("for", "postcode");
+                postcodelabel.innerText = "Postal Code:";
+
+                var postcode = document.createElement('input');
+                postcode.setAttribute("type", "text");
+                postcode.setAttribute("id", "postcode");
+                postcode.setAttribute("name", "postcode");
+
+                var emptyline = document.createElement("br");
+
+                form.appendChild(emptyline);
+                form.appendChild(namelabel);
+                form.appendChild(name);
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(addresslabel);
+                form.appendChild(address);
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(citylabel);
+                form.appendChild(city);
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(postcodelabel);
+                form.appendChild(postcode);
+                document.body.appendChild(form);
                 break;
-            //add more cases here, default should be the U.S form
+
+            case 'DE':
+                
+                var form = document.createElement('div');
+                form.setAttribute("id", "form");
+                form.setAttribute("class", "text-center");
+                document.body.appendChild(form);
+
+                var namelabel = document.createElement('label');
+                namelabel.setAttribute("id", "namelabel");
+                namelabel.setAttribute("for", "name");
+                namelabel.innerText = "recipient name:";
+
+                var name = document.createElement('input');
+                name.setAttribute("type", "text");
+                name.setAttribute("id", "name");
+                name.setAttribute("name", "name");
+
+                var addresslabel = document.createElement('label');
+                addresslabel.setAttribute("id", "addresslabel");
+                addresslabel.setAttribute("for", "address");
+                addresslabel.innerText = "Street address:";
+
+                var address = document.createElement('input');
+                address.setAttribute("type", "text");
+                address.setAttribute("id", "address");
+                address.setAttribute("name", "address");
+
+                var postcodelabel = document.createElement('label');
+                postcodelabel.setAttribute("id", "postcodelabel");
+                postcodelabel.setAttribute("for", "postcode");
+                postcodelabel.innerText = "Postal Code:";
+
+                var postcode = document.createElement('input');
+                postcode.setAttribute("type", "text");
+                postcode.setAttribute("id", "postcode");
+                postcode.setAttribute("name", "postcode");
+
+                var citylabel = document.createElement('label');
+                citylabel.setAttribute("id", "citylabel");
+                citylabel.setAttribute("for", "city");
+                citylabel.innerText = "City/Town";
+
+                var city = document.createElement('input');
+                city.setAttribute("type", "text");
+                city.setAttribute("id", "city");
+                city.setAttribute("name", "city");
+
+              
+                var emptyline = document.createElement("br");
+
+                form.appendChild(emptyline);
+                form.appendChild(namelabel);
+                form.appendChild(name);
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(addresslabel);
+                form.appendChild(address);
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(postcodelabel);
+                form.appendChild(postcode);               
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(citylabel);
+                form.appendChild(city);
+                document.body.appendChild(form);
+                break;
+
+            case 'IN':
+                var form = document.createElement('div');
+                form.setAttribute("id", "form");
+                form.setAttribute("class", "text-center");
+                document.body.appendChild(form);
+
+                var namelabel = document.createElement('label');
+                namelabel.setAttribute("id", "namelabel");
+                namelabel.setAttribute("for", "name");
+                namelabel.innerText = "recipient name:";
+
+                var name = document.createElement('input');
+                name.setAttribute("type", "text");
+                name.setAttribute("id", "name");
+                name.setAttribute("name", "name");
+
+                var addresslabel = document.createElement('label');
+                addresslabel.setAttribute("id", "addresslabel");
+                addresslabel.setAttribute("for", "address");
+                addresslabel.innerText = "Flat Number and Street name:";
+
+                var address = document.createElement('input');
+                address.setAttribute("type", "text");
+                address.setAttribute("id", "address");
+                address.setAttribute("name", "address");
+
+                var citylabel = document.createElement('label');
+                citylabel.setAttribute("id", "citylabel");
+                citylabel.setAttribute("for", "city");
+                citylabel.innerText = "City/Town/Locality:";
+
+                var city = document.createElement('input');
+                city.setAttribute("type", "text");
+                city.setAttribute("id", "city");
+                city.setAttribute("name", "city");
+
+                var postcodelabel = document.createElement('label');
+                postcodelabel.setAttribute("id", "postcodelabel");
+                postcodelabel.setAttribute("for", "postcode");
+                postcodelabel.innerText = "Postal Code:";
+
+                var postcode = document.createElement('input');
+                postcode.setAttribute("type", "text");
+                postcode.setAttribute("id", "postcode");
+                postcode.setAttribute("name", "postcode");
+
+                var emptyline = document.createElement("br");
+
+                form.appendChild(emptyline);
+                form.appendChild(namelabel);
+                form.appendChild(name);
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(addresslabel);
+                form.appendChild(address);
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(citylabel);
+                form.appendChild(city);
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(postcodelabel);
+                form.appendChild(postcode);
+                document.body.appendChild(form);
+                break;
+
+            case 'JP':
+
+                var form = document.createElement('div');
+                form.setAttribute("id", "form");
+                form.setAttribute("class", "text-center");
+                document.body.appendChild(form);
+
+                var namelabel = document.createElement('label');
+                namelabel.setAttribute("id", "namelabel");
+                namelabel.setAttribute("for", "name");
+                namelabel.innerText = "recipient name:";
+
+                var name = document.createElement('input');
+                name.setAttribute("type", "text");
+                name.setAttribute("id", "name");
+                name.setAttribute("name", "name");
+
+                var addresslabel = document.createElement('label');
+                addresslabel.setAttribute("id", "addresslabel");
+                addresslabel.setAttribute("for", "address");
+                addresslabel.innerText = "street name and house/building number";
+
+                var address = document.createElement('input');
+                address.setAttribute("type", "text");
+                address.setAttribute("id", "address");
+                address.setAttribute("name", "address");
+
+                var postcodelabel = document.createElement('label');
+                postcodelabel.setAttribute("id", "postcodelabel");
+                postcodelabel.setAttribute("for", "postcode");
+                postcodelabel.innerText = "Postal Code:";
+
+                var postcode = document.createElement('input');
+                postcode.setAttribute("type", "text");
+                postcode.setAttribute("id", "postcode");
+                postcode.setAttribute("name", "postcode");
+
+
+                var citylabel = document.createElement('label');
+                citylabel.setAttribute("id", "citylabel");
+                citylabel.setAttribute("for", "city");
+                citylabel.innerText = "city/town/locality:";
+
+                var city = document.createElement('input');
+                city.setAttribute("type", "text");
+                city.setAttribute("id", "city");
+                city.setAttribute("name", "city");
+
+                var emptyline = document.createElement("br");
+
+                form.appendChild(emptyline);
+                form.appendChild(namelabel);
+                form.appendChild(name);
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(addresslabel);
+                form.appendChild(address);
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(postcodelabel);
+                form.appendChild(postcode);
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(citylabel);
+                form.appendChild(city);
+                document.body.appendChild(form);
+                break;
         }
     }
 
