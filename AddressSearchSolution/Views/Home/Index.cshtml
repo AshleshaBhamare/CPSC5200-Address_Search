@@ -511,7 +511,17 @@
                 province.setAttribute("id", "province");
                 province.setAttribute("name", "province");
 
+                var values = ["North Chungcheong", "South Chungcheong", "Gangwon", "Gyeonggi", "North Gyeongsang", "South Gyeongsang", "North Jeolla", "South Jeolla", "Jeju"]
 
+                var selectstate = document.createElement("select");
+                selectstate.name = "state";
+                selectstate.id = "state";
+                for (const val of values) {
+                    var option = document.createElement("option");
+                    option.value = val;
+                    option.text = val;
+                    selectstate.appendChild(option)
+                }
                 var emptyline = document.createElement("br");
 
                 form.appendChild(emptyline);
@@ -532,7 +542,7 @@
                 form.appendChild(emptyline.cloneNode());
                 form.appendChild(emptyline.cloneNode());
                 form.appendChild(provincelabel);
-                form.appendChild(province);
+                form.appendChild(selectstate);
                 form.appendChild(emptyline.cloneNode());
                 form.appendChild(emptyline.cloneNode());
                 break;
@@ -584,10 +594,18 @@
                 provincelabel.setAttribute("for", "province");
                 provincelabel.innerText = "province:";
 
-                var province = document.createElement('input');
-                province.setAttribute("type", "text");
-                province.setAttribute("id", "province");
-                province.setAttribute("name", "province");
+                var values = ["Chagang", "North Hamgyong", "South Hamgyong", "North Hwanghae", "South Hwanghae", "Kangwon", "North Pyongan", "South Pyongan", "Ryanggang"]
+
+                var selectstate = document.createElement("select");
+                selectstate.name = "state";
+                selectstate.id = "state";
+                for (const val of values) {
+                    var option = document.createElement("option");
+                    option.value = val;
+                    option.text = val;
+                    selectstate.appendChild(option)
+                }
+               
 
 
                 var emptyline = document.createElement("br");
@@ -610,7 +628,7 @@
                 form.appendChild(emptyline.cloneNode());
                 form.appendChild(emptyline.cloneNode());
                 form.appendChild(provincelabel);
-                form.appendChild(province);
+                form.appendChild(selectstate);
                 form.appendChild(emptyline.cloneNode());
                 form.appendChild(emptyline.cloneNode());
                 break;
@@ -672,12 +690,19 @@
                 statelabel.setAttribute("for", "State");
                 statelabel.innerText = "state:";
 
-                var state = document.createElement('input');
-                state.setAttribute("type", "text");
-                state.setAttribute("id", "state");
-                state.setAttribute("name", "state");
 
+                var values = ["Distrito Federal", "Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Chiapas", "Chihuahua", "Coahuila", "Colima", "Durango", "Guanajuato", "Guerrero", "Hidalgo", "Jalisco",
+                    "Michoacán", "Morelos", "Nayarit", "Nuevo Leon", "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosi­", "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatan", "Zacatecas"]
 
+                var selectstate = document.createElement("select");
+                selectstate.name = "state";
+                selectstate.id = "state";
+                for (const val of values) {
+                    var option = document.createElement("option");
+                    option.value = val;
+                    option.text = val;
+                    selectstate.appendChild(option)
+                }
                 var emptyline = document.createElement("br");
 
                 form.appendChild(emptyline);
@@ -702,7 +727,7 @@
                 form.appendChild(emptyline.cloneNode());
                 form.appendChild(emptyline.cloneNode());
                 form.appendChild(statelabel);
-                form.appendChild(state);
+                form.appendChild(selectstate);
                 form.appendChild(emptyline.cloneNode());
                 form.appendChild(emptyline.cloneNode());
                 break;
