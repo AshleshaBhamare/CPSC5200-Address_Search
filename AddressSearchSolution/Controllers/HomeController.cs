@@ -83,8 +83,65 @@ namespace AddressSearchSolution.Controllers
                     {
                         messageToUser = "The address is valid for Canada.";
                     }
-
                     break;
+
+                case "DE":
+                    var _germanyPostalRegEx = @"^\d{5}$";
+                    if (!Regex.Match(address.post_code, _germanyPostalRegEx).Success)
+                    {
+                        valid = false;
+                        messageToUser += "Invalid post code. Post Code be 5 digit number.";
+                    }
+                    var _germanyCityRegex = @"[a-zA-Z][a-zA-Z]$";
+                    if (!Regex.Match(address.city, _germanyCityRegex).Success)
+                    {
+                        valid = false;
+                        messageToUser += "Invalid city name. Please add a valid word for city";
+                    }
+                    if (valid)
+                    {
+                        messageToUser = "The address is valid for Germany.";
+                    }
+                    break;
+
+                case "IN":
+                    var _indiaPostalRegEx = @"^[1-9][0-9]{5}$";
+                    if (!Regex.Match(address.post_code, _indiaPostalRegEx).Success)
+                    {
+                        valid = false;
+                        messageToUser += "Invalid post code. Post Code be 6 digit number.";
+                    }
+                    var _indiaCityRegex = @"[a-zA-Z][a-zA-Z]$";
+                    if (!Regex.Match(address.city, _indiaCityRegex).Success)
+                    {
+                        valid = false;
+                        messageToUser += "Invalid city name. Please add a valid word for city";
+                    }
+                    if (valid)
+                    {
+                        messageToUser = "The address is valid for India.";
+                    }
+                    break;
+
+                case "JP":
+                    var _japanPostalRegEx = @"^\d{3}-\d{4}$";
+                    if (!Regex.Match(address.post_code, _japanPostalRegEx).Success)
+                    {
+                        valid = false;
+                        messageToUser += "Invalid post code. Post Code be 6 digit number.";
+                    }
+                    var _japanCityRegex = @"[a-zA-Z][a-zA-Z]$";
+                    if (!Regex.Match(address.city, _japanCityRegex).Success)
+                    {
+                        valid = false;
+                        messageToUser += "Invalid city name. Please add a valid word for city";
+                    }
+                    if (valid)
+                    {
+                        messageToUser = "The address is valid for Japan.";
+                    }
+                    break;
+
 
                 case "MX":
                     var _mexicoZipRegEx = @"^\d{5}$";
