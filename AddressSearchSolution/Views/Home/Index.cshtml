@@ -233,6 +233,18 @@
                 province.setAttribute("type", "text");
                 province.setAttribute("id", "province");
                 province.setAttribute("name", "province");
+                var values = ["Alberta", "British Columbia", "Manitoba", "New Brunswick", "Newfoundland Labrador",
+                              "Nova Scotia", "Northwest Territories", "Nunavut", "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan", "Yukon"]
+
+                var selectprovince = document.createElement("select");
+                selectprovince.name = "province";
+                selectprovince.id = "province  ";
+                for (const val of values) {
+                    var option = document.createElement("option");
+                    option.value = val;
+                    option.text = val;
+                    selectprovince.appendChild(option)
+                }
 
                 var postcodelabel = document.createElement('label');
                 postcodelabel.setAttribute("id", "postcodelabel");
@@ -260,7 +272,7 @@
                 form.appendChild(emptyline.cloneNode());
                 form.appendChild(emptyline.cloneNode());
                 form.appendChild(provincelabel);
-                form.appendChild(province);
+                form.appendChild(selectprovince);
                 form.appendChild(emptyline.cloneNode());
                 form.appendChild(emptyline.cloneNode());
                 form.appendChild(postcodelabel);
