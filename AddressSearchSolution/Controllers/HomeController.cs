@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using AddressSearchSolution.Models;
 using Microsoft.AspNetCore.Http;
+using System.Text.RegularExpressions;
 
 namespace AddressSearchSolution.Controllers
 {
@@ -41,11 +42,27 @@ namespace AddressSearchSolution.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public string ValidateAddress([FromBody]Address address)
         {
-            string messageToUser = "validate successful";
+            string messageToUser = "";
+            Boolean valid = true;
             switch (address.country)
             {
                 case "BR":
-                    
+                    var _brazilZipRegEx = @"^\d{5}[-\s*]\d{3}$";
+                    if (!Regex.Match(address.post_code, _brazilZipRegEx).Success) {
+                        valid = false;
+                        messageToUser += "Invalid post code. Post Code should bea  5 digit number follow by - and a 3 digit number.";
+                    }
+                    var _brazilCityRegex = @"[-][a-zA-Z][a-zA-Z]$";
+                    if (!Regex.Match(address.city, _brazilCityRegex).Success)
+                    {
+                        valid = false;
+                        messageToUser += "Invalid city-province code. province code should be two alphabet letters.";
+                    }
+                    if (valid) {
+                        messageToUser = "The address is valid for brazil.";
+                    } else {
+
+                    }
                     break;
                 case "CA":
                     break;
