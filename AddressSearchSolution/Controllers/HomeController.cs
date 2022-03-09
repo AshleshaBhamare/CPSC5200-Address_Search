@@ -64,6 +64,28 @@ namespace AddressSearchSolution.Controllers
 
                     }
                     break;
+
+                case "CA":
+                    var _canadaPostalRegEx = @"^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$";
+                    if (!Regex.Match(address.post_code, _canadaPostalRegEx).Success)
+                    {
+                        valid = false;
+                        messageToUser += "Invalid post code. Post Code should be alphanumeric where letter is followed bydigit with " +
+                            "a space seperating third and fourth characters.";
+                    }
+                    var _canadaCityRegex = @"[a-zA-Z][a-zA-Z]$";
+                    if (!Regex.Match(address.city, _canadaCityRegex).Success)
+                    {
+                        valid = false;
+                        messageToUser += "Invalid city name. Please add a valid word for city";
+                    }
+                    if (valid)
+                    {
+                        messageToUser = "The address is valid for Canada.";
+                    }
+
+                    break;
+
                 case "MX":
                     var _mexicoZipRegEx = @"^\d{5}$";
                     if (!Regex.Match(address.post_code, _mexicoZipRegEx).Success)
@@ -83,6 +105,8 @@ namespace AddressSearchSolution.Controllers
                     }
                     
                     break;
+
+                
             }
 
             return messageToUser;
