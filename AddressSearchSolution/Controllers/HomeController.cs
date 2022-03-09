@@ -105,8 +105,67 @@ namespace AddressSearchSolution.Controllers
                     }
                     
                     break;
+                case "ES":
+                    var _spainZipRegEx = @"^\d{5}$";
+                    if (!Regex.Match(address.post_code, _spainZipRegEx).Success)
+                    {
+                        valid = false;
+                        messageToUser += "Invalid post code. Post Code should bea  5 digit number.";
+                    }
+                    var _spainCityRegex = @"[a-zA-Z][a-zA-Z]$";
+                    if (!Regex.Match(address.city, _spainCityRegex).Success)
+                    {
+                        valid = false;
+                        messageToUser += "Invalid city or locality. Please provide a valid word for city or locality.";
+                    }
+                    if (valid)
+                    {
+                        messageToUser = "The address is valid for Spain.";
+                    }
 
-                
+                    break;
+
+
+                case "US":
+                    var _usZipRegEx = @"^\d{5}$";
+                    if (!Regex.Match(address.post_code, _usZipRegEx).Success)
+                    {
+                        valid = false;
+                        messageToUser += "Invalid post code. Post Code should bea  5 digit number.";
+                    }
+                    var _usCityRegEx = @"[a-zA-Z][a-zA-Z]$";
+                    if (!Regex.Match(address.city, _usCityRegEx).Success)
+                    {
+                        valid = false;
+                        messageToUser += "Invalid city.Please provide a valid word for city.";
+                    }
+                    if (valid)
+                    {
+                        messageToUser = "The address is valid for US.";
+                    }
+
+                    break;
+
+
+                case "GB":
+                    var _ukZipRegEx = @"";
+                    if (!Regex.Match(address.post_code, _ukZipRegEx).Success)
+                    {
+                        valid = false;
+                        messageToUser += "Invalid post code. Post Code should have two parts separated by a space. ";
+                    }
+                    var _ukCityRegEx = @"[a-zA-Z][a-zA-Z]$";
+                    if (!Regex.Match(address.city, _ukCityRegEx).Success)
+                    {
+                        valid = false;
+                        messageToUser += "Invalid city.Please provide a valid word for postal town.";
+                    }
+                    if (valid)
+                    {
+                        messageToUser = "The address is valid for UK.";
+                    }
+
+                    break;
             }
 
             return messageToUser;
