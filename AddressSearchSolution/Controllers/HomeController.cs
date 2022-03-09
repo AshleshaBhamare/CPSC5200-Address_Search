@@ -42,7 +42,7 @@ namespace AddressSearchSolution.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public string ValidateAddress([FromBody]Address address)
         {
-            string messageToUser = "Please fill our required fields";
+            string messageToUser = "Please fill our required fields.\n";
             Boolean valid = true;
             switch (address.country)
             {
@@ -57,6 +57,11 @@ namespace AddressSearchSolution.Controllers
                     {
                         valid = false;
                         messageToUser += "Invalid city-province code. province code should be two alphabet letters.";
+                    }
+                    if (address.street_address == "")
+                    {
+                        valid = false;
+                        messageToUser += "Please enter street.\n";
                     }
                     if (valid) {
                         messageToUser = "The address is valid for brazil.";
@@ -148,13 +153,18 @@ namespace AddressSearchSolution.Controllers
                     if (!Regex.Match(address.post_code, _mexicoZipRegEx).Success)
                     {
                         valid = false;
-                        messageToUser += "Invalid post code. Post Code should bea  5 digit number.";
+                        messageToUser += "Invalid post code. Post Code should bea  5 digit number.\n";
                     }
                     var _mexicoCityRegex = @"[a-zA-Z][a-zA-Z]$";
                     if (!Regex.Match(address.city, _mexicoCityRegex).Success)
                     {
                         valid = false;
-                        messageToUser += "Invalid city or locality. Please provide a valid word for city or locality.";
+                        messageToUser += "Invalid city or locality. Please provide a valid word for city or locality.\n";
+                    }
+                    if (address.street_address == "")
+                    {
+                        valid = false;
+                        messageToUser += "Please enter street.\n";
                     }
                     if (valid)
                     {
@@ -162,18 +172,24 @@ namespace AddressSearchSolution.Controllers
                     }
                     
                     break;
+
                 case "ES":
                     var _spainZipRegEx = @"^\d{5}$";
                     if (!Regex.Match(address.post_code, _spainZipRegEx).Success)
                     {
                         valid = false;
-                        messageToUser += "Invalid post code. Post Code should bea  5 digit number.";
+                        messageToUser += "Invalid post code. Post Code should bea  5 digit number.\n";
                     }
                     var _spainCityRegex = @"[a-zA-Z][a-zA-Z]$";
                     if (!Regex.Match(address.city, _spainCityRegex).Success)
                     {
                         valid = false;
-                        messageToUser += "Invalid city or locality. Please provide a valid word for city or locality.";
+                        messageToUser += "Invalid city or locality. Please provide a valid word for city or locality.\n";
+                    }
+                    if (address.street_address == "")
+                    {
+                        valid = false;
+                        messageToUser += "Please enter street.\n";
                     }
                     if (valid)
                     {
@@ -188,19 +204,23 @@ namespace AddressSearchSolution.Controllers
                     if (!Regex.Match(address.post_code, _usZipRegEx).Success)
                     {
                         valid = false;
-                        messageToUser += "Invalid post code. Post Code should bea  5 digit number.";
+                        messageToUser += "Invalid post code. Post Code should bea  5 digit number.\n";
                     }
                     var _usCityRegEx = @"[a-zA-Z][a-zA-Z]$";
                     if (!Regex.Match(address.city, _usCityRegEx).Success)
                     {
                         valid = false;
-                        messageToUser += "Invalid city.Please provide a valid word for city.";
+                        messageToUser += "Invalid city.Please provide a valid word for city.\n";
+                    }
+                    if (address.street_address == "")
+                    {
+                        valid = false;
+                        messageToUser += "Please enter street.\n";
                     }
                     if (valid)
                     {
                         messageToUser = "The address is valid for US.";
                     }
-
                     break;
 
 
@@ -209,13 +229,18 @@ namespace AddressSearchSolution.Controllers
                     if (!Regex.Match(address.post_code, _ukZipRegEx).Success)
                     {
                         valid = false;
-                        messageToUser += "Invalid post code. Post Code should have two parts separated by a space. ";
+                        messageToUser += "Invalid post code. Post Code should have two parts separated by a space.\n";
                     }
                     var _ukCityRegEx = @"[a-zA-Z][a-zA-Z]$";
                     if (!Regex.Match(address.city, _ukCityRegEx).Success)
                     {
                         valid = false;
-                        messageToUser += "Invalid city.Please provide a valid word for postal town.";
+                        messageToUser += "Invalid city.Please provide a valid word for postal town.\n";
+                    }
+                    if (string.IsNullOrEmpty(address.street_address))
+                    {
+                        valid = false;
+                        messageToUser += "Please enter street.\n";
                     }
                     if (valid)
                     {
