@@ -50,13 +50,13 @@ namespace AddressSearchSolution.Controllers
                     var _brazilZipRegEx = @"^\d{5}[-\s*]\d{3}$";
                     if (!Regex.Match(address.post_code, _brazilZipRegEx).Success) {
                         valid = false;
-                        messageToUser += "Invalid post code. Post Code should bea  5 digit number follow by - and a 3 digit number.";
+                        messageToUser += "Invalid post code. Post Code should bea  5 digit number follow by - and a 3 digit number.\n";
                     }
                     var _brazilCityRegex = @"[-][a-zA-Z][a-zA-Z]$";
                     if (!Regex.Match(address.city, _brazilCityRegex).Success)
                     {
                         valid = false;
-                        messageToUser += "Invalid city-province code. province code should be two alphabet letters.";
+                        messageToUser += "Invalid city-province code. province code should be two alphabet letters.\n";
                     }
                     if (address.street_address == "")
                     {
@@ -76,13 +76,18 @@ namespace AddressSearchSolution.Controllers
                     {
                         valid = false;
                         messageToUser += "Invalid post code. Post Code should be alphanumeric where letter is followed bydigit with " +
-                            "a space seperating third and fourth characters.";
+                            "a space seperating third and fourth characters.\n";
                     }
                     var _canadaCityRegex = @"[a-zA-Z][a-zA-Z]$";
                     if (!Regex.Match(address.city, _canadaCityRegex).Success)
                     {
                         valid = false;
-                        messageToUser += "Invalid city name. Please add a valid word for city";
+                        messageToUser += "Invalid city name. Please add a valid word for city.\n";
+                    }
+                    if (address.street_address == "")
+                    {
+                        valid = false;
+                        messageToUser += "Please enter street.\n";
                     }
                     if (valid)
                     {
@@ -95,13 +100,18 @@ namespace AddressSearchSolution.Controllers
                     if (!Regex.Match(address.post_code, _germanyPostalRegEx).Success)
                     {
                         valid = false;
-                        messageToUser += "Invalid post code. Post Code be 5 digit number.";
+                        messageToUser += "Invalid post code. Post Code be 5 digit number.\n";
                     }
                     var _germanyCityRegex = @"[a-zA-Z][a-zA-Z]$";
                     if (!Regex.Match(address.city, _germanyCityRegex).Success)
                     {
                         valid = false;
-                        messageToUser += "Invalid city name. Please add a valid word for city";
+                        messageToUser += "Invalid city name. Please add a valid word for city\n";
+                    }
+                    if (address.street_address == "")
+                    {
+                        valid = false;
+                        messageToUser += "Please enter street.\n";
                     }
                     if (valid)
                     {
@@ -114,13 +124,18 @@ namespace AddressSearchSolution.Controllers
                     if (!Regex.Match(address.post_code, _indiaPostalRegEx).Success)
                     {
                         valid = false;
-                        messageToUser += "Invalid post code. Post Code be 6 digit number.";
+                        messageToUser += "Invalid post code. Post Code be 6 digit number.\n";
                     }
                     var _indiaCityRegex = @"[a-zA-Z][a-zA-Z]$";
                     if (!Regex.Match(address.city, _indiaCityRegex).Success)
                     {
                         valid = false;
-                        messageToUser += "Invalid city name. Please add a valid word for city";
+                        messageToUser += "Invalid city name. Please add a valid word for city\n";
+                    }
+                    if (address.street_address == "")
+                    {
+                        valid = false;
+                        messageToUser += "Please enter street.\n";
                     }
                     if (valid)
                     {
@@ -133,13 +148,18 @@ namespace AddressSearchSolution.Controllers
                     if (!Regex.Match(address.post_code, _japanPostalRegEx).Success)
                     {
                         valid = false;
-                        messageToUser += "Invalid post code. Post Code be 6 digit number.";
+                        messageToUser += "Invalid post code. Post Code be 6 digit number.\n";
                     }
                     var _japanCityRegex = @"[a-zA-Z][a-zA-Z]$";
                     if (!Regex.Match(address.city, _japanCityRegex).Success)
                     {
                         valid = false;
-                        messageToUser += "Invalid city name. Please add a valid word for city";
+                        messageToUser += "Invalid city name. Please add a valid word for city\n";
+                    }
+                    if (address.street_address == "")
+                    {
+                        valid = false;
+                        messageToUser += "Please enter street.\n";
                     }
                     if (valid)
                     {
