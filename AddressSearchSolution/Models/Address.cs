@@ -11,6 +11,7 @@ namespace AddressSearchSolution.Models
         public string street_address { get; set; }
         public string post_code { get; set; }
         public string city { get; set; }
+        public string subdivision { get; set; }
         public string province { get; set; }
         public string state { get;  set; }
         public string building { get; set; }
