@@ -914,14 +914,22 @@
 
                 var statelabel = document.createElement('label');
                 statelabel.setAttribute("id", "statelabel");
-                statelabel.setAttribute("for", "State");
+                statelabel.setAttribute("for", "state");
                 statelabel.innerText = "state:";
 
-                var state = document.createElement('input');
-                state.setAttribute("type", "text");
-                state.setAttribute("id", "state");
-                state.setAttribute("name", "state");
+                var values = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illnois", "Indiana", "Iowa",
+                    "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota",
+                    "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"]
 
+                var selectstate = document.createElement("select");
+                selectstate.name = "state";
+                selectstate.id = "state";
+                for (const val of values) {
+                    var option = document.createElement("option");
+                    option.value = val;
+                    option.text = val;
+                    selectstate.appendChild(option)
+                }
 
                 var emptyline = document.createElement("br");
 
@@ -943,7 +951,7 @@
                 form.appendChild(emptyline.cloneNode());
                 form.appendChild(emptyline.cloneNode());
                 form.appendChild(statelabel);
-                form.appendChild(state);
+                form.appendChild(selectstate);
                 form.appendChild(emptyline.cloneNode());
                 form.appendChild(emptyline.cloneNode());
                 form.appendChild(postcodelabel);
@@ -951,6 +959,7 @@
                 form.appendChild(emptyline.cloneNode());
                 form.appendChild(emptyline.cloneNode());
                 break;
+
             case 'ALL':
 
                 var namelabel = document.createElement('label');
