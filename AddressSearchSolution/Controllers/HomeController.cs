@@ -223,6 +223,49 @@ namespace AddressSearchSolution.Controllers
                     }
                     break;
 
+                case "KP":
+                    if (address.subdivision == "")
+                    {
+                        valid = false;
+                        messageToUser += "Please enter subdivision.\n";
+                    }
+                    if (address.building == "")
+                    {
+                        valid = false;
+                        messageToUser += "Please enter building.\n";
+                    }
+                    if (address.city == "")
+                    {
+                        valid = false;
+                        messageToUser += "Please enter city.\n";
+                    }
+                    if (valid)
+                    {
+                        messageToUser = "The address is valid for North Korea.";
+                    }
+                    break;
+
+                case "KR":
+                    if (address.subdivision == "")
+                    {
+                        valid = false;
+                        messageToUser += "Please enter subdivision.\n";
+                    }
+                    if (address.building == "")
+                    {
+                        valid = false;
+                        messageToUser += "Please enter building.\n";
+                    }
+                    if (address.city == "")
+                    {
+                        valid = false;
+                        messageToUser += "Please enter city.\n";
+                    }
+                    if (valid)
+                    {
+                        messageToUser = "The address is valid for South Korea.";
+                    }
+                    break;
 
                 case "GB":
                     var _ukZipRegEx = @"^([A-PR-UWYZ0-9][A-HK-Y0-9][AEHMNPRTVXY0-9]?[ABEHMNPRVWXY0-9]? {1,2}[0-9][ABD-HJLN-UW-Z]{2}|GIR 0AA)$";

@@ -1144,9 +1144,14 @@
         if (document.getElementById("subdivision")) {
             subdivision = document.getElementById("subdivision").value;
         }
+        var building = "";
+        if (document.getElementById("building")) {
+            building = document.getElementById("building").value;
+        }
 
         var data = JSON.stringify({
-            "recipient_name": recipient_name, "street_address": street_address, "city": city, "state": state, "subdivision": subdivision, "post_code": post_code, "country": country});
+            "recipient_name": recipient_name, "street_address": street_address, "building": building, "city": city, "state": state, "subdivision": subdivision, "post_code": post_code, "country": country
+        });
         xhr.send(data);
         
     }
