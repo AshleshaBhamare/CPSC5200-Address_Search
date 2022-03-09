@@ -999,15 +999,7 @@
 
             case 'ALL':
 
-                var namelabel = document.createElement('label');
-                namelabel.setAttribute("id", "namelabel");
-                namelabel.setAttribute("for", "name");
-                namelabel.innerText = "recipient name:";
-
-                var name = document.createElement('input');
-                name.setAttribute("type", "text");
-                name.setAttribute("id", "name");
-                name.setAttribute("name", "name");
+                
 
                 var streetlabel = document.createElement('label');
                 streetlabel.setAttribute("id", "addresslabel");
@@ -1019,69 +1011,14 @@
                 address.setAttribute("id", "address");
                 address.setAttribute("name", "address");
 
-                var buildinglabel = document.createElement('label');
-                buildinglabel.setAttribute("id", "buildinglabel");
-                buildinglabel.setAttribute("for", "building");
-                buildinglabel.innerText = "building number:";
-
-                var building = document.createElement('input');
-                building.setAttribute("type", "text");
-                building.setAttribute("id", "building");
-                building.setAttribute("name", "building");
-
-                var postcodelabel = document.createElement('label');
-                postcodelabel.setAttribute("id", "postcodelabel");
-                postcodelabel.setAttribute("for", "postcode");
-                postcodelabel.innerText = "Post Code:";
-
-                var postcode = document.createElement('input');
-                postcode.setAttribute("type", "text");
-                postcode.setAttribute("id", "postcode");
-                postcode.setAttribute("name", "postcode");
-
-                var citylabel = document.createElement('label');
-                citylabel.setAttribute("id", "citylabel");
-                citylabel.setAttribute("for", "city");
-                citylabel.innerText = "city:";
-
-                var city = document.createElement('input');
-                city.setAttribute("type", "text");
-                city.setAttribute("id", "city");
-                city.setAttribute("name", "city");
-
-                var statelabel = document.createElement('label');
-                statelabel.setAttribute("id", "statelabel");
-                statelabel.setAttribute("for", "State");
-                statelabel.innerText = "state:";
-
-                var state = document.createElement('input');
-                state.setAttribute("type", "text");
-                state.setAttribute("id", "state");
-                state.setAttribute("name", "state");
+                
 
                 var emptyline = document.createElement("br");
 
                 form.appendChild(emptyline);
                 form.appendChild(streetlabel);
                 form.appendChild(address);
-                form.appendChild(emptyline.cloneNode());
-                form.appendChild(emptyline.cloneNode());
-                form.appendChild(buildinglabel);
-                form.appendChild(building);
-                form.appendChild(emptyline.cloneNode());
-                form.appendChild(emptyline.cloneNode());
-                form.appendChild(citylabel);
-                form.appendChild(city);
-                form.appendChild(emptyline.cloneNode());
-                form.appendChild(emptyline.cloneNode());
-                form.appendChild(statelabel);
-                form.appendChild(state);
-                form.appendChild(emptyline.cloneNode());
-                form.appendChild(emptyline.cloneNode());
-                form.appendChild(postcodelabel);
-                form.appendChild(postcode);
-                form.appendChild(emptyline.cloneNode());
-                form.appendChild(emptyline.cloneNode());
+                
                 break;
 
         }

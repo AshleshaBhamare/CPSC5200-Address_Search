@@ -300,7 +300,7 @@ namespace AddressSearchSolution.Controllers
                         valid = false;
                         messageToUser += "Invalid city.Please provide a valid word for postal town.\n";
                     }
-                    if (string.IsNullOrEmpty(address.street_address))
+                    if (address.street_address == "")
                     {
                         valid = false;
                         messageToUser += "Please enter street.\n";
@@ -310,6 +310,18 @@ namespace AddressSearchSolution.Controllers
                         messageToUser = "The address is valid for UK.";
                     }
 
+                    break;
+
+                case "ALL":
+                    if (address.street_address == "")
+                    {
+                        valid = false;
+                        messageToUser += "Please enter street for search across countries.\n";
+                    }
+                    if (valid)
+                    {
+                        messageToUser = "The address is valid.";
+                    }
                     break;
             }
 
