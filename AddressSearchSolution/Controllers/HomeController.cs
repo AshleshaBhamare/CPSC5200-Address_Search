@@ -42,7 +42,7 @@ namespace AddressSearchSolution.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public string ValidateAddress([FromBody]Address address)
         {
-            string messageToUser = "";
+            string messageToUser = "Please fill our required fields";
             Boolean valid = true;
             switch (address.country)
             {
@@ -64,7 +64,24 @@ namespace AddressSearchSolution.Controllers
 
                     }
                     break;
-                case "CA":
+                case "MX":
+                    var _mexicoZipRegEx = @"^\d{5}$";
+                    if (!Regex.Match(address.post_code, _mexicoZipRegEx).Success)
+                    {
+                        valid = false;
+                        messageToUser += "Invalid post code. Post Code should bea  5 digit number.";
+                    }
+                    var _mexicoCityRegex = @"[a-zA-Z][a-zA-Z]$";
+                    if (!Regex.Match(address.city, _mexicoCityRegex).Success)
+                    {
+                        valid = false;
+                        messageToUser += "Invalid city or locality. Please provide a valid word for city or locality.";
+                    }
+                    if (valid)
+                    {
+                        messageToUser = "The address is valid for Mexico.";
+                    }
+                    
                     break;
             }
 
