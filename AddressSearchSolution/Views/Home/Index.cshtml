@@ -2,23 +2,139 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <!--<h1 class="display-4">Welcome Team4!</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>-->
+<html>
 
-    <select id="country" name="country">
-        <option>select country</option>
-        <option value="ALL">None</option>
-        <option value="BR">Brazil</option>
-        <option value="CA">Canada</option>
-        <option value="DE">Germany</option>
-        <option value="IN">India</option>
-        <option value="JP">Japan</option>
-        <option value="KP">Korea, Democratic People's Republic of</option>
-        <option value="KR">Korea, Republic of</option>
-        <option value="MX">Mexico</option>
-        <option value="ES">Spain</option>
-        <option value="GB">United Kingdom</option>
-        <option value="US">United States</option>
-    </select>
-</div>
+<body>
+    <div class="text-center">
+        <!--<h1 class="display-4">Welcome Team4!</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>-->
+
+        <select id="country" onchange="appendText(this)" name="country">
+            <option>select country</option>
+            <option value="ALL">None</option>
+            <option value="BR">Brazil</option>
+            <option value="CA">Canada</option>
+            <option value="DE">Germany</option>
+            <option value="IN">India</option>
+            <option value="JP">Japan</option>
+            <option value="KP">Korea, Democratic People's Republic of</option>
+            <option value="KR">Korea, Republic of</option>
+            <option value="MX">Mexico</option>
+            <option value="ES">Spain</option>
+            <option value="GB">United Kingdom</option>
+            <option value="US">United States</option>
+        </select>
+    </div>
+
+    <div id="form" class="text-center">
+        <br><br>
+        <label id="namelabel" for="name">recipient name:</label>
+
+        <input type="text" id="name" name="name"><br><br>
+
+        <label id="addresslabel" for="address">Address Line: </label>
+
+        <input type="text" id="address" name="address"><br><br>
+
+        <label id="buildinglabel" for="building">building and Unit Number: </label>
+
+        <input type="text" id="building" name="building"><br><br>
+
+        <label id="citylabel" for="city">City: </label>
+
+        <input type="text" id="city" name="city"><br><br>
+
+        <label id="statelabel" for="State">state: </label>
+
+        <input type="text" id="state" name="state"><br><br>
+
+        <label id="postcodelabel" for="postcode">ZipCode: </label>
+
+        <input type="text" id="postcode" name="postcode"><br><br>
+    </div>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    function appendText(obj) {
+        window.addEventListener('load', removeAllElement());
+        switch (obj.value) {
+            case 'BR':
+                var form = document.createElement('div');
+                form.setAttribute("id", "form");
+                form.setAttribute("class", "text-center");
+                document.body.appendChild(form);
+
+                var namelabel = document.createElement('label');
+                namelabel.setAttribute("id", "namelabel");
+                namelabel.setAttribute("for", "name");
+                namelabel.innerText = "recipient name:";
+
+                var name = document.createElement('input');
+                name.setAttribute("type", "text");
+                name.setAttribute("id", "name");
+                name.setAttribute("name", "name");
+
+                var addresslabel = document.createElement('label');
+                addresslabel.setAttribute("id", "addresslabel");
+                addresslabel.setAttribute("for", "address");
+                addresslabel.innerText = "stree name and house/builiding number:";
+
+                var address = document.createElement('input');
+                address.setAttribute("type", "text");
+                address.setAttribute("id", "address");
+                address.setAttribute("name", "address");
+
+                var citylabel = document.createElement('label');
+                citylabel.setAttribute("id", "citylabel");
+                citylabel.setAttribute("for", "city");
+                citylabel.innerText = "City-ProvinceCode:";
+
+                var city = document.createElement('input');
+                city.setAttribute("type", "text");
+                city.setAttribute("id", "city");
+                city.setAttribute("name", "city");
+
+                var postcodelabel = document.createElement('label');
+                postcodelabel.setAttribute("id", "postcodelabel");
+                postcodelabel.setAttribute("for", "postcode");
+                postcodelabel.innerText = "Post Code:";
+
+                var postcode = document.createElement('input');
+                postcode.setAttribute("type", "text");
+                postcode.setAttribute("id", "postcode");
+                postcode.setAttribute("name", "postcode");
+
+                var emptyline = document.createElement("br");
+
+                form.appendChild(emptyline);
+                form.appendChild(namelabel);
+                form.appendChild(name);
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(addresslabel);
+                form.appendChild(address);
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(citylabel);
+                form.appendChild(city);
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(postcodelabel);
+                form.appendChild(postcode);
+                document.body.appendChild(form);
+                break;
+            case 'CA':
+                //add code for CA here
+                break;
+            //add more cases here, default should be the U.S form
+        }
+    }
+
+    function removeAllElement() {
+        document.getElementById('form').remove();
+    }
+</script>
+</html>
