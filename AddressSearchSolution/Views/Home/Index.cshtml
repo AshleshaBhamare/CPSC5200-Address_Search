@@ -23,6 +23,8 @@
             <option value="GB">United Kingdom</option>
             <option value="US">United States</option>
         </select>
+        <br><br>
+        <label>Fields with * means it is a required field</label>
     </div>
 
     <div id="form" class="text-center">
@@ -145,7 +147,7 @@
                 var addresslabel = document.createElement('label');
                 addresslabel.setAttribute("id", "addresslabel");
                 addresslabel.setAttribute("for", "address");
-                addresslabel.innerText = "Stree name and house/builiding number:";
+                addresslabel.innerText = "Stree name and house/builiding number *:";
 
                 var address = document.createElement('input');
                 address.setAttribute("type", "text");
@@ -155,7 +157,7 @@
                 var citylabel = document.createElement('label');
                 citylabel.setAttribute("id", "citylabel");
                 citylabel.setAttribute("for", "city");
-                citylabel.innerText = "City-ProvinceCode:";
+                citylabel.innerText = "City-ProvinceCode *:";
 
                 var city = document.createElement('input');
                 city.setAttribute("type", "text");
@@ -165,7 +167,7 @@
                 var postcodelabel = document.createElement('label');
                 postcodelabel.setAttribute("id", "postcodelabel");
                 postcodelabel.setAttribute("for", "postcode");
-                postcodelabel.innerText = "Post Code:";
+                postcodelabel.innerText = "Post Code *:";
 
                 var postcode = document.createElement('input');
                 postcode.setAttribute("type", "text");
