@@ -338,7 +338,7 @@ namespace AddressSearchSolution.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public string searchAddress([FromBody] Address address)
         {
-            string matchResult = "";
+            string matchResult = "No matching results found for the entered field values.";
             string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Models\AddressData.json");
             List<string> filters = new List<string>();
             if(address.country != "")
