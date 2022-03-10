@@ -9,8 +9,8 @@
         <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>-->
 
         <select id="country" onchange="appendText(this)" name="country">
-            <option>select country</option>
-            <option value="ALL">None</option>
+            <option value="US">select country</option>
+            <option value="ALL">All</option>
             <option value="BR">Brazil</option>
             <option value="CA">Canada</option>
             <option value="DE">Germany</option>
@@ -115,11 +115,12 @@
         <button type="button" onclick="validateAddress()">Validate address</button><br><br>
 
         <button type="button" onclick="searchAddress()">Search address</button>
+
+        <p id="searchResult"></p>
     </div>
 
-    
-
 </body>
+    
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -997,9 +998,7 @@
                 form.appendChild(emptyline.cloneNode());
                 break;
 
-            case 'ALL':
-
-                
+            case 'ALL':               
 
                 var streetlabel = document.createElement('label');
                 streetlabel.setAttribute("id", "addresslabel");
@@ -1011,14 +1010,42 @@
                 address.setAttribute("id", "address");
                 address.setAttribute("name", "address");
 
-                
+                var postcodelabel = document.createElement('label');
+                postcodelabel.setAttribute("id", "postcodelabel");
+                postcodelabel.setAttribute("for", "postcode");
+                postcodelabel.innerText = "Post Code:";
+
+                var postcode = document.createElement('input');
+                postcode.setAttribute("type", "text");
+                postcode.setAttribute("id", "postcode");
+                postcode.setAttribute("name", "postcode");
+
+
+                var statelabel = document.createElement('label');
+                statelabel.setAttribute("id", "statelabel");
+                statelabel.setAttribute("for", "state");
+                statelabel.innerText = "state:";
+
+                var state = document.createElement('input');
+                state.setAttribute("type", "text");
+                state.setAttribute("id", "state");
+                state.setAttribute("name", "state");
 
                 var emptyline = document.createElement("br");
 
                 form.appendChild(emptyline);
                 form.appendChild(streetlabel);
                 form.appendChild(address);
-                
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(statelabel);
+                form.appendChild(state);
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(postcodelabel);
+                form.appendChild(postcode);
+                form.appendChild(emptyline.cloneNode());
+                form.appendChild(emptyline.cloneNode());
                 break;
 
         }
@@ -1035,6 +1062,12 @@
         sbutton.setAttribute("onclick", "searchAddress()");
         sbutton.innerText = "Search Address";
         form.appendChild(sbutton);
+        form.appendChild(emptyline.cloneNode());
+        form.appendChild(emptyline.cloneNode());
+        var searchResult = document.createElement('label');
+        searchResult.id = "searchResult";
+        searchResult.innerText = "";
+        form.appendChild(searchResult);
         document.body.appendChild(form);
     }
 
@@ -1050,7 +1083,7 @@
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
-                alert(xhr.responseText);
+                alert(xhr.responseText.replace(/\\n/mg, "\n"));
             }
         };
         var recipient_name = "";
@@ -1091,5 +1124,54 @@
         });
         xhr.send(data);
         
+    }
+
+    function searchAddress() {
+        let url = "https://localhost:44317/api/searchAddress"
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", url);
+        xhr.setRequestHeader("Accept", "application/json");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                var addresses = document.getElementById('searchResult');
+                var result = xhr.responseText.replace(/\\n/mg, "\n");
+                searchResult.innerText = result.replace(/\\/mg, "");
+            }
+        };
+        var recipient_name = "";
+        if (document.getElementById("name")) {
+            recipient_name = document.getElementById("name").value;
+        }
+        var street_address = "";
+        if (document.getElementById("address")) {
+            street_address = document.getElementById("address").value;
+        }
+        var city = "";
+        if (document.getElementById("city")) {
+            city = document.getElementById("city").value;
+        }
+        var state = "";
+        if (document.getElementById("state")) {
+            state = document.getElementById("state").value;
+        }
+        var country = "";
+        if (document.getElementById("country")) {
+            country = document.getElementById("country").value;
+            if (country == "ALL") country = "";
+        }
+        var post_code = "";
+        if (document.getElementById("postcode")) {
+            post_code = document.getElementById("postcode").value;
+        }
+        var subdivision = "";
+        if (document.getElementById("subdivision")) {
+            subdivision = document.getElementById("subdivision").value;
+        }
+
+        var data = JSON.stringify({
+            "recipient_name": recipient_name, "street_address": street_address, "city": city, "state": state, "subdivision": subdivision, "post_code": post_code, "country": country
+        });
+        xhr.send(data);
     }
 </script>

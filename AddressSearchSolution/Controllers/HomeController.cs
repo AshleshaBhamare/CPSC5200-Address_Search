@@ -8,6 +8,9 @@ using Microsoft.Extensions.Logging;
 using AddressSearchSolution.Models;
 using Microsoft.AspNetCore.Http;
 using System.Text.RegularExpressions;
+using System.IO;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace AddressSearchSolution.Controllers
 {
@@ -40,15 +43,16 @@ namespace AddressSearchSolution.Controllers
         [Route("api/validateAddress")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public string ValidateAddress([FromBody]Address address)
+        public string ValidateAddress([FromBody] Address address)
         {
-            string messageToUser = "Please fill our required fields.\n";
+            string messageToUser = "";
             Boolean valid = true;
             switch (address.country)
             {
                 case "BR":
                     var _brazilZipRegEx = @"^\d{5}[-\s*]\d{3}$";
-                    if (!Regex.Match(address.post_code, _brazilZipRegEx).Success) {
+                    if (!Regex.Match(address.post_code, _brazilZipRegEx).Success)
+                    {
                         valid = false;
                         messageToUser += "Invalid post code. Post Code should bea  5 digit number follow by - and a 3 digit number.\n";
                     }
@@ -63,10 +67,9 @@ namespace AddressSearchSolution.Controllers
                         valid = false;
                         messageToUser += "Please enter street.\n";
                     }
-                    if (valid) {
+                    if (valid)
+                    {
                         messageToUser = "The address is valid for brazil.";
-                    } else {
-
                     }
                     break;
 
@@ -326,6 +329,54 @@ namespace AddressSearchSolution.Controllers
             }
 
             return messageToUser;
+        }
+
+
+        [HttpPost]
+        [Route("api/searchAddress")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public string searchAddress([FromBody] Address address)
+        {
+            string matchResult = "";
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Models\AddressData.json");
+            List<string> filters = new List<string>();
+            if(address.country != "")
+            {
+                filters.Add("country:" + address.country);      
+            }
+            if (address.post_code != "")
+            {
+                filters.Add("post_code:" + address.post_code);
+            }
+            if (address.state != "")
+            {
+                filters.Add("state:" + address.state);
+            }
+            if (address.street_address != "")
+            {
+                filters.Add("street_address:" + address.street_address);
+            }
+ 
+            foreach (string line in System.IO.File.ReadLines(path))
+            {
+                string[] information= line.Split(',');
+                Boolean match = false;
+                foreach (string filter in filters)
+                {
+                    match = false;
+                    string[] content = filter.Split(':');
+                    foreach (string info in information)
+                    {
+                        string[] content2 = info.Split(':');
+                        if (content2[0].Contains(content[0]) && content2[1].Contains(content[1])) match = true;
+                    }
+                    if (match == false) break;
+                }
+                if (match == true) matchResult += line+"\n";
+
+            }      
+            return matchResult;
         }
     }
 }
